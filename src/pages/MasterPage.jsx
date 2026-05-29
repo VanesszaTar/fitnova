@@ -48,7 +48,11 @@ function MasterPage({ currentUser, setCurrentUser, plans, setPlans, isOnline, ws
 
   useEffect(() => {
     if (isViewingOtherUser) {
-      fetch(`${BASE_URL}/api/users/${viewingUserId}`)
+      fetch(`${BASE_URL}/api/users/${viewingUserId}`, {
+        headers: {
+          'Authorization': `Bearer ${getToken()}`
+        }
+      })
         .then(res => res.json())
         .then(data => setViewedUser(data))
         .catch(() => {})
