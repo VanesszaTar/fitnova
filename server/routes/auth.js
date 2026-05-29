@@ -3,15 +3,15 @@ const router = express.Router()
 const jwt = require('jsonwebtoken')
 const crypto = require('crypto')
 const bcrypt = require('bcryptjs')
-const { Resend } = require('resend')
 const { RefreshToken, PasswordResetToken, TwoFactorCode, User, Role, Permission } = require('../models')
 
 // ── Email client ───────────────────────────────────────────────────────────
-const resend = new Resend(process.env.RESEND_API_KEY)
+const sgMail = require('@sendgrid/mail')
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 async function sendMail({ to, subject, html }) {
-  return resend.emails.send({
-    from: 'FitNova <onboarding@resend.dev>',
+  return sgMail.send({
+    from: 'vanessatar05@gmail.com',
     to,
     subject,
     html
