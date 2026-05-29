@@ -1,0 +1,28 @@
+require('dotenv').config()
+
+module.exports = {
+  development: {
+    username: 'vanesszatar',
+    password: null,
+    database: 'fitnova',
+    host: '127.0.0.1',
+    dialect: 'postgres',
+    logging: false
+  },
+  test: {
+    username: 'vanesszatar',
+    password: null,
+    database: 'fitnova_test',
+    host: '127.0.0.1',
+    dialect: 'postgres',
+    logging: false
+  },
+  production: {
+    use_env_variable: 'DATABASE_URL',
+    dialect: 'postgres',
+    logging: false,
+    dialectOptions: {
+      ssl: { require: true, rejectUnauthorized: false }
+    }
+  }
+}
