@@ -1,0 +1,5 @@
+process.env.NODE_ENV = 'test'
+process.env.JWT_SECRET = 'test_secret_for_jest'
+process.env.JWT_EXPIRES_IN = '15m'
+process.env.REFRESH_TOKEN_SECRET = 'test_refresh_secret'
+process.env.REFRESH_TOKEN_EXPIRES_IN = '7d'

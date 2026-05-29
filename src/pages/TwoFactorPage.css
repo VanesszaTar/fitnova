@@ -1,0 +1,50 @@
+.tfa-code-inputs {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 8px 0;
+}
+
+.tfa-digit {
+  width: 48px;
+  height: 56px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 10px;
+  color: #fff;
+  outline: none;
+  caret-color: #E0607E;
+  transition: border-color 0.2s;
+}
+
+.tfa-digit:focus {
+  border-color: rgba(224, 96, 126, 0.5);
+}
+
+.tfa-digit.input-error {
+  border-color: rgba(224, 96, 126, 0.55);
+}
+
+.tfa-error {
+  font-size: 10px;
+  color: #E0607E;
+  text-align: center;
+}
+.tfa-error::before {
+  content: "⚠ ";
+}
+
+.tfa-resend-success {
+  font-size: 12px;
+  color: #22c55e;
+  text-align: center;
+}
+
+.tfa-expired {
+  font-size: 12px;
+  color: rgba(224, 96, 126, 0.7);
+  text-align: center;
+}

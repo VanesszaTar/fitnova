@@ -1,0 +1,23 @@
+/* ── Security Question Page ──────────────────────────────────────────────── */
+
+.sq-question-box {
+  background: rgba(224, 96, 126, 0.08);
+  border: 1px solid rgba(224, 96, 126, 0.2);
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 14px;
+  color: #F6C5AF;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sq-question-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.sq-question-text {
+  font-weight: 500;
+}

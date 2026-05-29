@@ -1,0 +1,482 @@
+/* ===================================== */
+/* 🌍 GLOBAL SAFETY */
+/* ===================================== */
+html, body, #root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* ===================================== */
+/* 💻 LAYOUT ADAPTATION (under 900px) */
+/* ===================================== */
+@media (max-width: 900px) {
+
+  /* ===== Presentation Page ===== */
+  .pres-hero {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 40px;
+  }
+  .pres-right {
+    justify-content: center;
+  }
+
+  /* ===== Register Page ===== */
+  .reg-main {
+    grid-template-columns: 1fr !important;
+    padding: 0 !important;
+  }
+  .reg-left,
+  .reg-divider {
+    display: none !important;
+  }
+  .reg-right {
+    padding: 20px !important;
+    justify-content: center;
+    width: 100% !important;
+  }
+  .reg-card {
+    width: 100% !important;
+    max-width: 520px !important;
+    border-radius: 16px !important;
+  }
+
+  /* ===== Login Page ===== */
+  .login-main {
+    grid-template-columns: 1fr !important;
+    padding: 0 !important;
+    overflow-y: auto !important;
+  }
+  .login-left,
+  .login-divider {
+    display: none !important;
+  }
+  .login-right {
+    padding: 20px !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+  .login-card {
+    width: 100% !important;
+    max-width: 520px !important;
+    border-radius: 16px !important;
+  }
+  /* ===== Master Page ===== */
+  .sidebar {
+    display: none !important;
+  }
+  .hamburger-btn {
+    display: flex !important;
+  }
+  .mobile-overlay {
+    display: block !important;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 200;
+  }
+  .mobile-sidebar {
+    display: flex !important;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 240px;
+    z-index: 201;
+    flex-direction: column;
+    background: var(--bg-sidebar);
+    border-right: 1px solid var(--border);
+  }
+  .master-content {
+    width: 100vw !important;
+  }
+  .master-topbar {
+    padding: 0 16px !important;
+  }
+  .master-toolbar {
+    padding: 12px 16px !important;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .master-table-wrap {
+    padding: 0 16px !important;
+  }
+  .master-pagination {
+    padding: 10px 16px !important;
+  }
+
+  /* ===== Detail Page ===== */
+    .detail-page .sidebar {
+    display: none !important;
+    }
+    .detail-page .hamburger-btn {
+    display: flex !important;
+    }
+    .detail-page .mobile-overlay {
+    display: block !important;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 200;
+    }
+    .detail-page .mobile-sidebar {
+    display: flex !important;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 240px;
+    z-index: 201;
+    flex-direction: column;
+    background: var(--bg-sidebar);
+    border-right: 1px solid var(--border);
+    }
+    .detail-main {
+    width: 100vw !important;
+    }
+    .detail-topbar {
+    padding: 0 16px !important;
+    height: auto !important;
+    flex-wrap: wrap !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    gap: 8px !important;
+    }
+    .detail-body {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto !important;
+    overflow-y: auto !important;
+    }
+    .detail-divider {
+    display: none !important;
+    }
+    .detail-left {
+    border-bottom: 1px solid var(--border) !important;
+    overflow-y: visible !important;
+    }
+    .detail-right {
+    overflow: visible !important;
+    }
+    /* ===== Statistics Page ===== */
+    .stats-page .sidebar {
+    display: none !important;
+    }
+    .stats-page .hamburger-btn {
+    display: flex !important;
+    }
+    .stats-page .mobile-overlay {
+    display: block !important;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 200;
+    }
+    .stats-page .mobile-sidebar {
+    display: flex !important;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 240px;
+    z-index: 201;
+    flex-direction: column;
+    background: var(--bg-sidebar);
+    border-right: 1px solid var(--border);
+    }
+    .stats-main {
+    width: 100vw !important;
+    }
+    .stats-topbar {
+    padding: 0 16px !important;
+    }
+    .stats-summary-row {
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    padding: 8px 12px !important;
+    gap: 6px !important;
+    }
+    .stats-summary-card {
+    min-width: 110px !important;
+    max-width: 110px !important;
+    flex-shrink: 0 !important;
+    padding: 8px 10px !important;
+    border-radius: 10px !important;
+    }
+    .stats-summary-label { font-size: 8px !important; }
+    .stats-summary-val { font-size: 16px !important; }
+    .stats-summary-val.small { font-size: 11px !important; }
+    .stats-summary-sub { font-size: 9px !important; }
+    .stats-view-toggle { display: flex !important; }
+    .stats-divider { display: none !important; }
+    .stats-panels { overflow-y: auto !important; }
+    .stats-panel-visual { display: none !important; }
+    .stats-panel-table { display: none !important; }
+    .stats-panel-visual.active-panel { display: flex !important; }
+    .stats-panel-table.active-panel { display: flex !important; }
+}
+
+
+/* ===================================== */
+/* 📱 FLEXIBLE COMPONENT ADJUSTMENTS (under 700px) */
+/* ===================================== */
+@media (max-width: 700px) {
+
+  /* ===== Presentation Page ===== */
+  .pres-actions {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .pres-login-row {
+    flex-wrap: wrap;
+  }
+  .pres-stats-row,
+  .pres-macro-row {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .pres-stat-box,
+  .pres-macro-item {
+    flex: 1 1 45%;
+    min-width: 0;
+  }
+  .cookie-banner {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  /* ===== Register Page ===== */
+  .reg-row-2 {
+    grid-template-columns: 1fr !important;
+  }
+  .reg-card {
+    padding: 20px !important;
+    border-radius: 12px !important;
+  }
+  .reg-nav {
+    padding: 0 16px !important;
+  }
+  .reg-nav-left {
+    gap: 8px;
+  }
+  .reg-logo-name {
+    font-size: 16px !important;
+  }
+  .reg-nav-right {
+    min-width: 0;
+  }
+  .reg-nav-hint {
+    display: none !important;
+  }
+
+  /* ===== Login Page ===== */
+  .login-nav {
+    padding: 0 16px !important;
+  }
+  .login-nav-hint {
+    display: none !important;
+  }
+  .login-logo-name {
+    font-size: 16px !important;
+  }
+  .login-btn-back {
+    padding: 6px 10px !important;
+    font-size: 11px !important;
+  }
+  .login-card {
+    padding: 20px !important;
+  }
+
+  /* ===== Master Page ===== */
+  .master-topbar {
+    height: auto !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    padding: 12px 16px !important;
+    gap: 8px;
+  }
+  .master-topbar-actions { width: 100%; justify-content: flex-end; }
+  .master-toolbar {
+    flex-direction: column !important;
+    padding: 12px 16px !important;
+    gap: 8px;
+  }
+  .master-search { width: 100% !important; }
+  .master-search-wrap { width: 100% !important; }
+  .master-table-wrap { padding: 0 12px !important; }
+  .master-pagination { padding: 10px 12px !important; flex-wrap: wrap; gap: 8px; }
+  .master-table thead th:nth-child(2),
+  .master-table tbody td:nth-child(2),
+  .master-table thead th:nth-child(5),
+  .master-table tbody td:nth-child(5) { display: none !important; }
+  .modal { width: 95vw !important; max-width: 95vw !important; padding: 20px !important; }
+  .modal-large { width: 95vw !important; max-width: 95vw !important; }
+  .modal-delete { width: 90vw !important; }
+  .exercise-params-grid { grid-template-columns: 1fr 1fr !important; }
+  .exercise-list { grid-template-columns: 1fr !important; }
+
+  /* ===== Detail Page ===== */
+    .detail-topbar-right {
+    width: 100% !important;
+    justify-content: flex-end !important;
+    }
+    .detail-btn-back {
+    font-size: 11px !important;
+    padding: 6px 10px !important;
+    }
+    .detail-breadcrumb {
+    font-size: 12px !important;
+    }
+    .breadcrumb-parent {
+    display: none !important;
+    }
+    .breadcrumb-sep {
+    display: none !important;
+    }
+    .detail-ex-params {
+    grid-template-columns: 1fr 1fr !important;
+    }
+    .detail-ex-edit-grid {
+    grid-template-columns: 1fr 1fr !important;
+    }
+    .detail-add-params-grid {
+    grid-template-columns: 1fr 1fr !important;
+    }
+    .detail-add-exercise-list {
+    grid-template-columns: 1fr !important;
+    }
+    .detail-modal {
+    width: 90vw !important;
+    }
+    .detail-exercises-list {
+    padding: 12px 16px !important;
+    }
+    .detail-exercises-header {
+    padding: 14px 16px !important;
+    }
+
+    /* ===== Statistics Page ===== */
+    .stats-topbar {
+    height: auto !important;
+    padding: 10px 16px !important;
+    }
+    .stats-topbar-title {
+    font-size: 13px !important;
+    }
+    .stats-table thead th:nth-child(3),
+    .stats-table tbody td:nth-child(3),
+    .stats-table thead th:nth-child(6),
+    .stats-table tbody td:nth-child(6) {
+    display: none !important;
+    }
+}
+
+/* ===================================== */
+/* 📱 SMALL SCREENS (under 400px) */
+/* ===================================== */
+@media (max-width: 400px) {
+
+  /* ===== Presentation Page ===== */
+  .pres-stat-box,
+  .pres-macro-item {
+    flex: 1 1 100%;
+  }
+  .pres-nav-right {
+    min-width: 0;
+  }
+  .pres-nav-hint {
+    white-space: normal;
+    line-height: 1.1;
+    max-width: 120px;
+  }
+
+  /* ===== Register Page ===== */
+  .reg-nav-hint {
+    white-space: normal;
+    line-height: 1.1;
+    max-width: 120px;
+  }
+  .reg-card {
+    padding: 16px !important;
+  }
+  .reg-password-rules {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  /* ===== Login Page ===== */
+  .login-card {
+    padding: 16px !important;
+  }
+
+  /* ===== Master Page ===== */
+  .master-topbar-title { font-size: 15px !important; }
+  .master-btn-add { font-size: 12px !important; padding: 7px 14px !important; }
+  .master-pagination {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 12px !important;
+  }
+  .pagination-info, 
+  .pagination-per-page {
+    font-size: 11px !important;
+    text-align: center !important;
+  } 
+  .pagination-controls {
+    justify-content: center !important;
+  }
+  .master-table thead th:nth-child(4),
+  .master-table tbody td:nth-child(4) { display: none !important; }
+
+  /* ===== Detail Page ===== */
+    .detail-btn-delete {
+    font-size: 11px !important;
+    padding: 6px 10px !important;
+    }
+    .detail-btn-activate {
+    font-size: 11px !important;
+    padding: 6px 10px !important;
+    }
+    .detail-ex-params {
+    grid-template-columns: 1fr 1fr !important;
+    }
+
+    /* ===== Statistics Page ===== */
+    .stats-summary-card {
+    min-width: 100% !important;
+    }
+    .stats-topbar-sub {
+    display: none !important;
+    }
+    .stats-table thead th:nth-child(4),
+    .stats-table tbody td:nth-child(4),
+    .stats-table thead th:nth-child(5),
+    .stats-table tbody td:nth-child(5) {
+    display: none !important;
+    }
+    .stats-summary-row {
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    padding: 6px 10px !important;
+    gap: 5px !important;
+    }
+    .stats-summary-card {
+    min-width: 100px !important;
+    max-width: 100px !important;
+    flex-shrink: 0 !important;
+    padding: 6px 8px !important;
+    border-radius: 8px !important;
+    }
+    .stats-summary-label {
+    font-size: 7px !important;
+    letter-spacing: 0 !important;
+    }
+    .stats-summary-val {
+    font-size: 14px !important;
+    }
+    .stats-summary-val.small {
+    font-size: 10px !important;
+    }
+  }
