@@ -29,3 +29,9 @@ dist-ssr
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+
+server/.env
+node_modules/
+server/certs/
+dist/
+*.zip
