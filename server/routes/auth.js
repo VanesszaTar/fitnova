@@ -3,19 +3,20 @@ const router = express.Router()
 const jwt = require('jsonwebtoken')
 const crypto = require('crypto')
 const bcrypt = require('bcryptjs')
-const nodemailer = require('nodemailer')
+const { Resend } = require('resend')
 const { RefreshToken, PasswordResetToken, TwoFactorCode, User, Role, Permission } = require('../models')
 
-// ── Email transporter ──────────────────────────────────────────────────────
-const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 587,
-  secure: false,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  }
-})
+// ── Email client ───────────────────────────────────────────────────────────
+const resend = new Resend(process.env.RESEND_API_KEY)
+
+async function sendMail({ to, subject, html }) {
+  return resend.emails.send({
+    from: 'FitNova <onboarding@resend.dev>',
+    to,
+    subject,
+    html
+  })
+}
 
 // ── Refresh token helper ───────────────────────────────────────────────────
 async function issueRefreshToken(userId, role, permissions, res) {
@@ -119,8 +120,7 @@ router.post('/forgot-password', async (req, res) => {
 
     const resetUrl = `${req.headers.origin}/reset-password?token=${token}`
 
-    await transporter.sendMail({
-      from: `"FitNova" <${process.env.EMAIL_USER}>`,
+    await sendMail({
       to: email,
       subject: 'Reset your FitNova password',
       html: `
@@ -213,8 +213,7 @@ router.post('/send-2fa', async (req, res) => {
 
     await TwoFactorCode.create({ userId, code, expiresAt })
 
-    await transporter.sendMail({
-      from: `"FitNova" <${process.env.EMAIL_USER}>`,
+    await sendMail({
       to: user.email,
       subject: 'Your FitNova verification code',
       html: `
@@ -310,13 +309,11 @@ router.post('/verify-security', async (req, res) => {
     })
     if (!user) return res.status(404).json({ error: 'User not found' })
 
-    // Compare the answer case insensitively
     const valid = await bcrypt.compare(answer.toLowerCase().trim(), user.securityAnswer)
     if (!valid) {
       return res.status(400).json({ error: 'Incorrect answer' })
     }
 
-    // All 3 steps passed — issue the real JWT
     const permissions = user.Role?.Permissions?.map(p => p.name) || []
     const token = jwt.sign(
       { userId: user.id, role: user.Role?.name || 'user', permissions },
