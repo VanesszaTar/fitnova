@@ -35,3 +35,8 @@ node_modules/
 server/certs/
 dist/
 *.zip
+
+
+coverage/
+server/coverage/
+server/test-results/
